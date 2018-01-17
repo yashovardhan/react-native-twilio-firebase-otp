@@ -2,6 +2,7 @@ const admin = require('firebase-admin');
 const functions = require('firebase-functions');
 const createUser = require('./create_user');
 const serviceAccount = require('./service-account.json')
+const requestOTP = require('./request_otp');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -9,3 +10,4 @@ admin.initializeApp({
 });
 
 exports.createUser = functions.https.onRequest(createUser);
+exports.requestOTP = functions.https.onRequest(requestOTP);
